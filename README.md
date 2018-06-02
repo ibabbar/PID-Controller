@@ -27,3 +27,21 @@ PID controller with **P** and **D = 0**, using only the Integral control, causes
 ![Image of Derivative](images/derivativecontroller.gif)
 
 PID controller with **P** and **I** = 0, using only the Derivative control, the car drives reasonably well for a short distance and then drives off the track which is not desirable for controlling a self driving car.
+
+## Choosing the Hyperparameters
+
+How I chose the optimal coefficient values for our PID controller. Picking a coefficient that increases or decreases too much P, I or D can cause the car trajectory to go awfully wrong.
+
+There are a few approaches to iterate over different values and get to optimal hyperparameters.
+
+The twiddle algorithm, also known as “coordinate ascent” is a generic algorithm that tries to find a good choice of parameters for an algorithm that returns an error. Unfortunatly, the controller with resulted parameters was able to drive car around the track but with a lot of wobbling. Hence the need to tune the parameters manually by try-and-error process.
+
+## Final simulation
+
+I implemented the final PID controller with **P = 0.15, I = 0.0 and D = 2.5**. The full video of driving around the track is in the videos folder (pidcontroller.mp4)
+
+![Image of PID Controller](images/pidcontroller.gif)
+
+
+## Comments 
+PID controller can also be achieved using **Deep Reinforcement Learning** what would very interesting is to see how this compares with this project approach and what is actually the best strategy for a self driving car.
