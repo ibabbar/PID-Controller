@@ -9,3 +9,13 @@ The simulator provides cross-track error CTE, speed, and steering angle data via
 **P** is the component that is proportional to the current track error. It has direct impact on the trajectory because it makes the car to “correct” in the same proportion of the error in the opposite direction. There’s a natural overshooting effect that will cause the car to swivel hard left and right eventually driving the car off-track. See a video below of PID controller with I and D = 0, using only the proportional control.
  
 ![Image of proportional control](images/proportionalcontroller.gif)
+
+PID controller with I and D = 0, using only the proportional control, causes the car to oscillate or stir rapidly from left to right which is not desirable for controlling a self driving car.
+
+
+## Integral control
+**I** is the integral control, I considers all past values of the CTE and it’s measured by the integral or the sum of the crosstrack errors over time. The reason we need it is that there’s likely residual error after applying the proportional control. This ends up causing a bias over a long period of time that avoids the car to get in the exact trajectory. This integral term seeks to eliminate this residual error by adding a historic cumulative value of the error.
+
+![Image of integral control](images/integralcontroller.gif)
+
+PID controller with P and D = 0, using only the Integral control, causes the car to stir with the wrong trajectory which is not desirable for controlling a self driving car.
